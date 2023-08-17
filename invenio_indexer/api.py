@@ -171,6 +171,9 @@ class RecordIndexer(object):
         arguments = arguments or {}
         body = self._prepare_record(record, index, arguments, **kwargs)
         index = self._prepare_index(index)
+        current_app.logger.debug("+++++++++++ BODY OF THE RECORD THAT WILL BE INDEXED: {0}".format(body))
+        current_app.logger.debug("+++++++++++ ARGUMENTS OF THE RECORD THAT WILL BE INDEXED: {0}".format(arguments))
+        current_app.logger.debug("+++++++++++ INDEX OF THE RECORD THAT WILL BE INDEXED: {0}".format(index))
 
         return self.client.index(
             id=str(record.id),
